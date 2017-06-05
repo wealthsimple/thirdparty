@@ -4,10 +4,6 @@ Rubygem for making API calls to Thirdparty.com Trade API.
 
 This is more of a proof-of-concept at this point to demonstrate how to make most requests in the Sandbox environment.
 
-## Installation
-
-TODO
-
 ## Usage
 
 To use the `thirdparty` gem, just require and configure it with the OAuth credentials you've been provided with:
