@@ -10,5 +10,7 @@ require "thirdparty/request"
 require "thirdparty/resource"
 require "thirdparty/version"
 
+Dir[File.dirname(__FILE__) + '/thirdparty/market/*.rb'].each {|file| require file }
+
 module Thirdparty
 end

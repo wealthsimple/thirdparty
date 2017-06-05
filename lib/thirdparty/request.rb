@@ -12,7 +12,7 @@ module Thirdparty
     end
 
     %i(get post put delete head patch).each do |http_method|
-      define_singleton_method(http_method) do |path, body: nil, authenticated: nil|
+      define_singleton_method(http_method) do |path, body: nil, authenticated: true|
         Request.new(method: http_method, path: path, body: body, authenticated: authenticated).execute
       end
     end
