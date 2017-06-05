@@ -42,6 +42,23 @@ pp funding_source
 #    "status"=>"new",
 #    "capabilities"=>{"deposit"=>false, "withdraw"=>true}},
 
+
+transfer_id = SecureRandom.uuid
+
+begin
+  transfer = Thirdparty::Account::Transfer.create(account_id, transfer_id, {
+    amount: 3.50,
+    source_id: funding_source_id,
+  })
+
+  pp transfer
+
+rescue Faraday::Error => e
+  p e.response
+
+  # {\"error\":\"The source is not active\",\"code\":\"RULES\"}\n"}
+end
+
 begin
   Thirdparty::Account::FundingSource.delete(account_id, funding_source_id)
 rescue Faraday::Error => e
