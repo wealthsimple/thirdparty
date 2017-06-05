@@ -37,7 +37,7 @@ module Thirdparty
 
     def connection
       Faraday.new(url: Thirdparty.configuration.base_url) do |faraday|
-        faraday.response :logger, ::Logger.new(STDOUT), bodies: true
+        faraday.response :logger, ::Logger.new(STDOUT), bodies: false
         faraday.adapter Faraday.default_adapter
         faraday.use Faraday::Response::RaiseError
       end
@@ -45,7 +45,7 @@ module Thirdparty
 
     def body_to_json(body)
       if body
-        body.is_a?(String) ? body : body.to_json
+        body.is_a?(Array) || body.is_a?(Hash) ? body.to_json : body
       else
         nil
       end
